@@ -20,4 +20,5 @@ from musixscore.views import *
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', index),
+    url(r'^login/$', Login.as_view()),
 ]
