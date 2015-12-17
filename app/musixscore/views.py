@@ -12,9 +12,25 @@ from django.db import connection
 
 
 def index(request):
-    return render(request, 'index.html')
+    form = LoginForm()
+    return render(request, 'index.html', {'form': form})
 
 
 class Login(View):
     def post(self, request):
-        return HttpResponse()
+        form = LoginForm(self.request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = auth.authenticate(username=username, password=password)
+            if user is not None and user.is_active:
+                auth.login(request, user)
+                return HttpResponse('Logged In!')
+            else:
+                return HttpResponse('Invalid pasword/username!')
+        else:
+            return HttpResponse('Please fill out required forms!')
+
+
+def addGenre(request):
+    return render(request, 'add_genre.html')
