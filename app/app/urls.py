@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^login/$', Login.as_view()),
     url(r'^addGenre/$', addGenre),
+    url(r'^deleteAlbum/$', deleteAlbum),
 ]

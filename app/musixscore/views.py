@@ -34,3 +34,12 @@ class Login(View):
 
 def addGenre(request):
     return render(request, 'add_genre.html')
+
+
+class deleteAlbum(request):
+
+    def get(self, request):
+        album_id = request.GET['album_id']
+        query = Album.objects.get(id=subject_id)
+        query.delete()
+        return HttpResponse()

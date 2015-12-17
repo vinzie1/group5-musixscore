@@ -14,6 +14,7 @@ class Artist(models.Model):
 
 class Album(models.Model):
     album = models.CharField(max_length=200)
+    type = models.CharField(max_length=200)
     artist = models.ForeignKey(Artist)
 
 
@@ -25,3 +26,4 @@ class Song(models.Model):
 class Work(models.Model):
     work = models.CharField(max_length=200)
     artist = models.ForeignKey(Artist)
+
